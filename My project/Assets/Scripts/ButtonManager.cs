@@ -13,35 +13,35 @@ public class ButtonManager : MonoBehaviour
 
     public void Play()
     {
-        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Game");
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); //Asettaa savedscene tietokantaan nykyisen scenen arvon
+        Time.timeScale = 1.0f; //Asettaa pelin ajaksi yksi jolloin peli toimii
+        SceneManager.LoadScene("Game"); //Vaihtaa skenen peli skeneen
     }
 
     public void MainMenu()
     {
-        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenu");
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); //Asettaa savedscene tietokantaan nykyisen scenen arvon
+        Time.timeScale = 1.0f; //Asettaa pelin ajaksi yksi jolloin peli toimii
+        SceneManager.LoadScene("MainMenu"); //Vaihtaa skenen mainmenu skeneen
     }
 
     public void Quit()
     {
-        Time.timeScale = 1.0f;
-        Debug.Log("QUIT");
-        Application.Quit();
+        Time.timeScale = 1.0f; //Asettaa pelin ajaksi yksi jolloin peli toimii
+        Debug.Log("QUIT"); //Tulostaa debug konsoliin sanan quit
+        Application.Quit(); //Sulkee pelin
     }
 
     public void Settings()
     {
-        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Settings");
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); //Asettaa savedscene tietokantaan nykyisen scenen arvon
+        Time.timeScale = 1.0f; //Asettaa pelin ajaksi yksi jolloin peli toimii
+        SceneManager.LoadScene("Settings"); //Vaihtaa skenen asetus skeneen
     }
 
     public void Back()
     {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+        Time.timeScale = 1.0f; //Asettaa pelin ajaksi yksi jolloin peli toimii
+        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene")); //Vaihtaa skenen viimeiseksi olleeseen skeneen
     }
 }
