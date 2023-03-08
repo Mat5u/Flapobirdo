@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     public int highScore = 0; //Highscore muuttuja jonka arvo on 0
 
-    [SerializeField] Button pauseButton; //Pause Nappi komponentti
     //Diemenu
     [SerializeField] private GameObject dieMenu; //Diemenu objekti
     public TextMeshProUGUI dieScoreText; //TextMeshPro teksti komponentti
@@ -48,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         jumps = 0; //Alustaa jumps muuttujan arvoksi 0
         score = 0; //Alustaa score muuttujan arvoksi 0
         Time.timeScale = 0; //Asettaa pelin ajan nollaan, jolloin mik‰‰n objekti ei liiku
-        //PlayerPrefs.DeleteAll(); //Poistaa kaikkien playerprefsien tiedot pidet‰‰n p‰‰ll‰ vain peli‰ tehdess‰.
+        PlayerPrefs.DeleteAll(); //Poistaa kaikkien playerprefsien tiedot pidet‰‰n p‰‰ll‰ vain peli‰ tehdess‰.
 
         //Load
         highScore = PlayerPrefs.GetInt("HighScore", 0); //Lataa viimeisimm‰t tiedot highscore tietokannasta
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1; //Asettaa pelin ajan yhteen ja peli toimii
             pressAnyKeyText.gameObject.SetActive(false); //Piilottaa PressAnyKey tekstin
             scoreText.gameObject.SetActive(true); //Laittaa score tekstin n‰kyv‰ksi
-            pauseButton.gameObject.SetActive(true); //Laitaa pause napin n‰kyv‰ksi
             gameOff = false; //Asettaa pelin p‰‰lle
         }
 
@@ -116,7 +114,6 @@ public class PlayerMovement : MonoBehaviour
     {
         pause = true; //Peli on paused
         scoreText.gameObject.SetActive(false); //Piilottaa score tekstin
-        pauseButton.gameObject.SetActive(false); //Piilottaa pausenapin
         pauseScoreText.text = "" + score; //Asettaa pause n‰kym‰n score tekstin arvoksi scoren muuttujan arvon
         pauseJumpsText.text = "" + jumps; //Asettaa pause n‰kym‰n jumps tekstin arvoksi jumps muuttujan arvon
         pausedHighScoreText.text = "" + highScore; //Asettaa pausedmenun n‰kym‰n highscore tekstin arvoksi highscore muuttujan arvon
@@ -135,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
         scoreText.gameObject.SetActive(false); //Piilottaa score tekstin
-        pauseButton.gameObject.SetActive(false); //Piilottaa pausenapin
         dieScoreText.text = "" + score; //Asettaa diemenun n‰kym‰n score tekstin arvoksi score muuttujan arvon
         dieJumpsText.text = "" + jumps; //Asettaa diemenun n‰kym‰n jumps tekstin arvoksi jumps muuttujan arvon
         highScoreText.text = "" + highScore; //Asettaa diemenun n‰kym‰n highscore tekstin arvoksi highscore muuttujan arvon
@@ -145,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void resume() //Funktio resume
     {
-        pauseButton.gameObject.SetActive(true); //Laittaa pause napin n‰kyv‰ksi
         scoreText.gameObject.SetActive(true); //Asettaa scoretekstin n‰kyv‰ksi
         pauseMenu.SetActive(false); //Piiloittaa pausemenun
         pause = false; //peli ei ole paused
